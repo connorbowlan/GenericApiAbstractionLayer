@@ -8,8 +8,6 @@ The Generic API Abstraction Layer is a C# library that provides generic CRUD (Cr
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Reference](#api-reference)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Dependencies
 
@@ -36,6 +34,18 @@ To use the Generic API Abstraction Layer, you need to follow these steps:
 1. Create an instance of the `HttpClient` class to make API requests.
 2. Instantiate the `GenericCrudProvider<TObj, TKey>` class, providing an `ILogger` instance and the `HttpClient` instance.
 3. Use the methods provided by the `GenericCrudProvider<TObj, TKey>` class to perform CRUD operations on your objects.
+
+## API Reference
+
+### `GenericCrudProvider<TObj, TKey>`
+
+The `GenericCrudProvider<TObj, TKey>` class provides the following methods:
+
+- `Task<IEnumerable<TObj>?> GetAsync(bool includeRelationships = false)`: Gets a collection of objects asynchronously. Returns a collection of objects if successful; otherwise, `null`. You can specify the `includeRelationships` parameter to determine whether to include relationships in the result.
+- `Task<TObj?> GetAsync(TKey id, bool includeRelationships = false)`: Gets an object by its ID asynchronously. Returns the object if found; otherwise, `null`. You can specify the `includeRelationships` parameter to determine whether to include relationships in the result.
+- `Task<TObj?> PostAsync(TObj obj)`: Creates a new object asynchronously. Returns the created object if successful; otherwise, `null`.
+- `Task<TObj?> PutAsync(TKey id, TObj obj)`: Updates an object asynchronously. Returns the updated object if successful; otherwise, `null`.
+- `Task<TObj?> DeleteAsync(TKey id)`: Deletes an object asynchronously. Returns the deleted object if successful; otherwise, `null`.
 
 Here's an example of how to use the Generic API Abstraction Layer:
 
